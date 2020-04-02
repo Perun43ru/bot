@@ -54,12 +54,13 @@ else
 {
    setInterval(()=>
    {
-       if (getRandom(0,100)<30){
-           location.href="https://yandex.ru/";
-       }
+       /*if (getRandom(0,100)<30){
+           location.href="https://yandex.ru";
+       }*/
        let index=getRandom(0,links.length)
-       if (links[index].href == 'https://vk.com/vladlen_777'){
-           location.href="https://yandex.ru/";
+       console.log (links[index]);
+       if (links[index].hostname != 'https://xn----7sbab5aqcbiddtdj1e1g.xn--p1ai'){
+           location.href="https://yandex.ru";;
        }
        links[index].click();},1000);
    }
@@ -67,5 +68,3 @@ else
 function getRandom(min,max){
     return Math.floor(Math.random()*(max-min)+min);
 }
-
-
