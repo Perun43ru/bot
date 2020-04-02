@@ -10,25 +10,30 @@
 // ==/UserScript==
 let YInput=document.getElementsByName('text')[0];
 let btn=document.getElementsByClassName('button_theme_websearch')[0];
+
 let sW = document.text = ['Гобой', 'Кларнет', 'Саксофон', 'Флейта','Валторна','Фагот'];
-let i=getRandom(0, sW.length);
+let searchWord = sW[getRandom(0, sW.length)];
+let i=0;
 let links=document.links;
 
 if (btn!=undefined){
   let timerId=setInterval(()=>{
 
-     YInput.value=sW[i];
+     YInput.value+=searchWord[i];
         i++;
-        //if(i==sW.length){
+        if(i==searchWord.length){
 
           clearInterval(timerId);
           btn.click();
-        //}
+        }
       },500);
   }
 else if(location.hostname == "yandex.ru"){
     let flag = true;
     for (let i = 0; i<links.length; i++){
+        if (links[i].href == 'https://vk.com/vladlen_777'){
+            continue;
+        }
     if (links[i].href.indexOf('https://xn----7sbab5aqcbiddtdj1e1g.xn--p1ai/')!=-1)
     {
         links[i].removeAttribute("target");
