@@ -31,9 +31,6 @@ if (btn!=undefined){
 else if(location.hostname == "yandex.ru"){
     let flag = true;
     for (let i = 0; i<links.length; i++){
-        if (links[i].href == 'https://vk.com/vladlen_777'){
-            continue;
-        }
     if (links[i].href.indexOf('https://xn----7sbab5aqcbiddtdj1e1g.xn--p1ai/')!=-1)
     {
         links[i].removeAttribute("target");
@@ -57,8 +54,13 @@ else
 {
    setInterval(()=>
    {
-       if (getRandom(0,100)<30) location.href="https://yandex.ru/";
+       if (getRandom(0,100)<30){
+           location.href="https://yandex.ru/";
+       }
        let index=getRandom(0,links.length)
+       if (links[index].href == 'https://vk.com/vladlen_777'){
+           location.href="https://yandex.ru/";
+       }
        links[index].click();},1000);
    }
 
